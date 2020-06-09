@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-  const initialMovie = {
-        id: '',
-        title: '',
-        director: '',
-        metascore: '',
-        stars: []
-    }
+//TODO: Refactor - use useParams instead
+const initialMovie = {
+    title: '',
+    director: '',
+    metascore: '',
+    stars: []
+}
 
 const UpdateMovie = props => {
  const [movie, setMovie] = useState(initialMovie);
-
-console.log('form', props);
 
  useEffect(() => {
      const movieToEdit = props.movies.find(
