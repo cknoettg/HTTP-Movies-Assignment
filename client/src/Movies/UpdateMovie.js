@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
+import axios from 'axios';
 
 //TODO: Refactor - use useParams instead
 const initialMovie = {
@@ -11,6 +12,7 @@ const initialMovie = {
 
 const UpdateMovie = props => {
  const [movie, setMovie] = useState(initialMovie);
+ const params = useParams();
 
  useEffect(() => {
      const movieToEdit = props.movies.find(
@@ -40,10 +42,10 @@ const UpdateMovie = props => {
  const handleSubmit = e => {
      e.preventDefault();
      axios
-     .put(`http://localhost:5000/api/movies/${movie.id}`, movie)
+     .put(`http://localhost:5000/api/movies/${params.id}`, movie)
      .then(res => {
          setMovie(res.data);
-         props.history.push(`/movies/${movie.id}`)
+         props.history.push(`/movies/${params.id}`)
         }
      )
      .catch(err => console.log(err))
