@@ -23,7 +23,6 @@ function Movie({ addToSavedList }) {
     axios.delete(`http://localhost:5000/api/movies/${params.id}`)
     .then(res => {
       this.setState({movie: res.data})
-      //this.props.history.push(`/`);
     })
     .catch(err => console.log(err))
   }
